@@ -51,12 +51,26 @@ export const Navbar = () => {
 
         {/* CTA */}
         <div className="hidden md:block">
-          <Button size="sm">Contact Me</Button>
+          <Button
+            size="sm"
+            onClick={() => {
+              window.location.hash = "#contact";
+            }}
+          >
+            Contact Me
+          </Button>
         </div>
 
         {/* Mobile Toggle Button */}
         <button
-          onClick={() => setIsaMenuOpen(!isaMenuOpen)}
+          onClick={() => {
+            console.log();
+            
+            setIsaMenuOpen(false); // action 1
+            document
+              .getElementById("contact")
+              ?.scrollIntoView({ behavior: "smooth" }); // action 2
+          }}
           className="md:hidden p-2 cursor-pointer text-foreground z-50"
         >
           {isaMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -78,7 +92,15 @@ export const Navbar = () => {
               </a>
             ))}
 
-            <Button onClick={() => setIsaMenuOpen(false)} size="sm">Contact Me</Button>
+            <Button
+              onClick={() => {
+                setIsaMenuOpen(false);
+                window.location.hash = "#contact";
+              }}
+              size="sm"
+            >
+              Contact Me
+            </Button>
           </div>
         </div>
       )}
